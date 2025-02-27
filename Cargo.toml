@@ -13,7 +13,7 @@ exclude = [".gitignore", ".github/*"]
 
 [dependencies]
 enr = { version = "0.12", features = ["k256", "ed25519"] }
-tokio = { version = "1", features = ["net", "sync", "macros", "rt"] }
+tokio = { version = "=1.41.1", features = ["net", "sync", "macros", "rt"] }
 libp2p-identity = { version = "0.2", features = [
     "ed25519",
     "secp256k1",
@@ -29,7 +29,7 @@ hex = "0.4"
 fnv = "1"
 arrayvec = "0.7"
 rand = { version = "0.8", package = "rand" }
-socket2 = "0.5"
+socket2 = "0.6.0"
 smallvec = "1"
 parking_lot = "0.12"
 lazy_static = "1"
@@ -55,3 +55,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 [features]
 libp2p = ["dep:libp2p-identity", "dep:multiaddr"]
 serde = ["enr/serde"]
+
+[patch.crates-io]
+socket2 = { git = "https://github.com/cristibctr/socket2.git", branch = "v0.6.0" }
+tokio = { git = "https://github.com/cristibctr/tokio-wasix", branch = "wasix-1.41.1" }
